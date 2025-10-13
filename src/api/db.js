@@ -1,6 +1,6 @@
 // src/api/db.js
 
-// Productos
+// Tus nuevos productos ¡se mantienen!
 const products = [
     { id: 1, name: "Control Xbox", price: 59000, image: "/img/xbox.webp", description: "Control inalámbrico de Xbox con diseño ergonómico y vibración háptica." },
     { id: 2, name: "Auriculares Logitech", price: 60000, image: "/img/logi.jpeg", description: "Auriculares Logitech con micrófono incorporado y sonido envolvente." },
@@ -11,15 +11,15 @@ const products = [
     { id: 7, name: "Silla Gamer", price: 89990, image: "/img/silla.jpg", description: "Silla gamer ergonómica con soporte lumbar y ajuste de altura reclinable." },
 ];
 
-// Formato moneda
-function money(x) {
+// ▼▼▼ FUNCIÓN DE MONEDA CORREGIDA (CON EXPORT) ▼▼▼
+export function money(x) {
   return Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP" }).format(x);
 }
 
-
+// ▼▼▼ ESTRUCTURA DE USUARIOS CORRECTA (CON TODOS LOS CAMPOS) ▼▼▼
 let users = [
-    { id: 1, email: 'roro@duoc.cl', password: 'admin', role: 'admin' },
-    { id: 2, email: 'user@test.com', password: 'user123', role: 'user' },
+    { id: 1, email: 'roro@duoc.cl', password: 'admin', role: 'admin', fullName: 'Admin Roro', phone: 'N/A', region: 'N/A' },
+    { id: 2, email: 'user@test.com', password: 'user123', role: 'user', fullName: 'Usuario Test', phone: '987654321', region: 'Los Lagos' },
 ];
 
 // --- Product Functions ---
@@ -40,13 +40,23 @@ export const loginUser = ({ email, password }) => {
     });
 };
 
-export const registerUser = ({ email, password }) => {
+// ▼▼▼ FUNCIÓN 'registerUser' CORRECTA (CON TODOS LOS CAMPOS) ▼▼▼
+export const registerUser = (userData) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
+            const { email, password, fullName, phone, region } = userData;
             if (users.some(u => u.email === email)) {
                 reject('El correo ya está registrado');
             } else {
-                const newUser = { id: users.length + 1, email, password, role: 'user' };
+                const newUser = {
+                    id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
+                    email,
+                    password,
+                    role: 'user',
+                    fullName,
+                    phone: phone || 'No especificado',
+                    region,
+                };
                 users.push(newUser);
                 resolve({ id: newUser.id, email: newUser.email, role: newUser.role });
             }
@@ -66,6 +76,7 @@ export const deleteUser = (userId) => {
     });
 };
 
+// ▼▼▼ FUNCIÓN 'addUser' CORRECTA (CON TODOS LOS CAMPOS) ▼▼▼
 export const addUser = ({ email, password }) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -76,10 +87,13 @@ export const addUser = ({ email, password }) => {
                     id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
                     email,
                     password,
-                    role: 'user' // Los admins solo pueden crear usuarios normales
+                    role: 'user',
+                    fullName: 'Nuevo Usuario',
+                    phone: 'N/A',
+                    region: 'N/A'
                 };
                 users.push(newUser);
-                resolve(users); // Devuelve la lista de usuarios actualizada
+                resolve(users);
             }
         }, 300);
     });
