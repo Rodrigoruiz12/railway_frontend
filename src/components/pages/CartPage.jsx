@@ -7,6 +7,8 @@ import Button from '../atoms/Button';
 import Text from '../atoms/Text';
 import Image from '../atoms/Image';
 import { Link } from 'react-router-dom';
+// --- CAMBIO 1: Importamos tu función 'money' (asumiendo que está en 'utils/formatPrice.js') ---
+import { money } from '../../utils/formatPrice';
 
 const CartPage = () => {
     const { cart, removeFromCart } = useContext(CartContext);
@@ -29,12 +31,17 @@ const CartPage = () => {
                             <Image src={item.image} alt={item.name} style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '4px' }}/>
                             <Heading level={4}>{item.name}</Heading>
                             <Text>Cantidad: {item.quantity}</Text>
-                            <Text>${(item.price * item.quantity).toFixed(2)}</Text>
+                            
+                            {/* --- CAMBIO 2: Usamos tu función 'money' aquí --- */}
+                            <Text>{money(item.price * item.quantity)}</Text>
+                            
                             <Button variant="secondary" onClick={() => removeFromCart(item.id)}>Eliminar</Button>
                         </div>
                     ))}
                     <Heading level={2} style={{ textAlign: 'right', marginTop: '20px' }}>
-                        Total: ${total.toFixed(2)}
+                        
+                        {/* --- CAMBIO 3: Y usamos tu función 'money' aquí --- */}
+                        Total: {money(total)}
                     </Heading>
                 </div>
             )}
