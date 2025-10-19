@@ -1,9 +1,9 @@
-// src/components/pages/RegisterPage.jsx
+// src/components/pages/RegistroPage.jsx
 import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import MainLayout from '../templates/MainLayout';
 import Heading from '../atoms/Heading';
-import FormField from '../molecules/FormField';
+import Formulario from '../molecules/Formulario';
 import Button from '../atoms/Button';
 import Text from '../atoms/Text';
 import { registerUser } from '../../api/db';
@@ -17,7 +17,7 @@ const regionesDeChile = [
   "Aysén del General Carlos Ibáñez del Campo", "Magallanes y de la Antártica Chilena"
 ];
 
-const RegisterPage = () => {
+const RegistroPage = () => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -58,16 +58,16 @@ const RegisterPage = () => {
             <form onSubmit={handleSubmit} style={{ maxWidth: '500px', margin: '40px auto', padding: '30px', background: '#fff', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
                 <Heading level={1} style={{ textAlign: 'center' }}>Registro de usuario</Heading>
                 
-                <FormField label="NOMBRE COMPLETO" id="fullName" type="text" value={fullName} onChange={e => setFullName(e.target.value)} required />
-                <FormField label="CORREO" id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+                <Formulario label="NOMBRE COMPLETO" id="fullName" type="text" value={fullName} onChange={e => setFullName(e.target.value)} required />
+                <Formulario label="CORREO" id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
                 
-                <FormField label="CONTRASEÑA" id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                <Formulario label="CONTRASEÑA" id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
                 <Text style={{ fontSize: '0.8em', color: '#6c757d', marginTop: '-10px', marginBottom: '10px' }}>
                     Debe tener entre 5 y 15 caracteres.
                 </Text>
 
-                <FormField label="CONFIRMAR CONTRASEÑA" id="confirmPassword" type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
-                <FormField label="TELÉFONO (opcional)" id="phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} />
+                <Formulario label="CONFIRMAR CONTRASEÑA" id="confirmPassword" type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
+                <Formulario label="TELÉFONO (opcional)" id="phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} />
                 
                 <div style={{ marginBottom: '15px' }}>
                     <Label htmlFor="region">Seleccione la región</Label>
@@ -89,4 +89,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage;
+export default RegistroPage;

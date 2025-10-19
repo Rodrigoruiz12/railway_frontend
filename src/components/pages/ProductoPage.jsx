@@ -1,11 +1,11 @@
-// src/components/pages/ProductsPage.jsx
+// src/components/pages/ProductoPage.jsx
 import { useState, useEffect } from 'react';
 import MainLayout from '../templates/MainLayout';
 import Heading from '../atoms/Heading';
-import ProductGrid from '../organisms/ProductGrid';
+import Catalogo from '../organisms/Catalogo';
 import { getProducts } from '../../api/db';
 
-const ProductsPage = () => {
+const ProductoPage = () => {
   // Guarda la lista original y completa de productos.
   const [products, setProducts] = useState([]);
   
@@ -37,9 +37,9 @@ const ProductsPage = () => {
       />
       
       {/* Muestra la lista de productos ya filtrada. */}
-      <ProductGrid products={filteredProducts} />
+      <Catalogo products={filteredProducts} />
     </MainLayout>
   );
 };
 
-export default ProductsPage;
+export default ProductoPage;

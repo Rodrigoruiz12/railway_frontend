@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 
-import ProductCard from './ProductCard.jsx';
+import ProductCard from './Producto.jsx';
 import { CartContext } from '../../context/CartContext.jsx';
 
 // Creamos un producto de prueba

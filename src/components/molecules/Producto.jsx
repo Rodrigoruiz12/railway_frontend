@@ -6,7 +6,7 @@ import Image from '../atoms/Image';
 import Text from '../atoms/Text';
 import Button from '../atoms/Button';
 import { CartContext } from '../../context/CartContext';
-import './ProductCard.css';
+import './producto.css';
 // --- CAMBIO 1: Importamos tu función 'money' (asumiendo que está en 'utils/formatPrice.js') ---
 import { money } from '../../utils/formatPrice';
 

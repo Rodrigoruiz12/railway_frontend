@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import MainLayout from '../templates/MainLayout';
 import Heading from '../atoms/Heading';
 import Button from '../atoms/Button';
-import FormField from '../molecules/FormField';
+import Formulario from '../molecules/Formulario';
 import Text from '../atoms/Text';
 import { AuthContext } from '../../context/AuthContext';
-import { getUsers, deleteUser, addUser, getProducts, addProduct } from '../../api/db'; // Importamos las nuevas funciones
+import { getUsers, deleteUser, addUser, getProducts, addProduct } from '../../api/db';
 
 const AdminPage = () => {
     const { user } = useContext(AuthContext);
@@ -106,10 +106,10 @@ const AdminPage = () => {
                 {/* Formulario para agregar productos */}
                 <form onSubmit={handleAddProduct} style={{ marginBottom: '20px' }}>
                     <Heading level={3}>Agregar Nuevo Producto</Heading>
-                    <FormField label="Nombre del Producto" type="text" value={newProductName} onChange={e => setNewProductName(e.target.value)} />
-                    <FormField label="Precio" type="number" value={newProductPrice} onChange={e => setNewProductPrice(e.target.value)} />
-                    <FormField label="URL de la Imagen" type="text" value={newProductImage} onChange={e => setNewProductImage(e.target.value)} />
-                    <FormField label="Descripción" type="textarea" value={newProductDesc} onChange={e => setNewProductDesc(e.target.value)} />
+                    <Formulario label="Nombre del Producto" type="text" value={newProductName} onChange={e => setNewProductName(e.target.value)} />
+                    <Formulario label="Precio" type="number" value={newProductPrice} onChange={e => setNewProductPrice(e.target.value)} />
+                    <Formulario label="URL de la Imagen" type="text" value={newProductImage} onChange={e => setNewProductImage(e.target.value)} />
+                    <Formulario label="Descripción" type="textarea" value={newProductDesc} onChange={e => setNewProductDesc(e.target.value)} />
                     {productError && <Text style={{ color: 'red' }}>{productError}</Text>}
                     <Button type="submit">Agregar Producto</Button>
                 </form>
@@ -131,8 +131,8 @@ const AdminPage = () => {
                 <Heading level={2}>Administrar Usuarios</Heading>
                 <form onSubmit={handleAddUser} style={{ marginBottom: '20px' }}>
                     <Heading level={3}>Agregar Nuevo Usuario</Heading>
-                    <FormField label="Email" type="email" value={newUserEmail} onChange={e => setNewUserEmail(e.target.value)} />
-                    <FormField label="Contraseña" type="password" value={newUserPassword} onChange={e => setNewUserPassword(e.target.value)} />
+                    <Formulario label="Email" type="email" value={newUserEmail} onChange={e => setNewUserEmail(e.target.value)} />
+                    <Formulario label="Contraseña" type="password" value={newUserPassword} onChange={e => setNewUserPassword(e.target.value)} />
                     {userError && <Text style={{ color: 'red' }}>{userError}</Text>}
                     <Button type="submit">Agregar Usuario</Button>
                 </form>

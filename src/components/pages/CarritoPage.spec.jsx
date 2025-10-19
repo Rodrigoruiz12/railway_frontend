@@ -1,4 +1,4 @@
-// src/components/pages/CartPage.spec.jsx
+// src/components/pages/CarritoPage.spec.jsx
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 
-import CartPage from './CartPage.jsx';
+import CarritoPage from './CarritoPage.jsx';
 import { CartContext } from '../../context/CartContext.jsx';
 // --- CAMBIO 1: Importar el AuthContext ---
 import { AuthContext } from '../../context/AuthContext.jsx';
@@ -21,14 +21,14 @@ const renderCart = (cartValue) => {
             {/* Envolvemos todo con el AuthContext que faltaba */}
             <AuthContext.Provider value={authContextValue}>
                 <CartContext.Provider value={cartValue}>
-                    <CartPage />
+                    <CarritoPage />
                 </CartContext.Provider>
             </AuthContext.Provider>
         </BrowserRouter>
     );
 };
 
-describe('Componente CartPage', () => {
+describe('Componente CarritoPage', () => {
 
     // --- Prueba 10: Renderizado Condicional y Contexto ---
     it('debería mostrar "Tu carrito está vacío" si el contexto no tiene items', () => {

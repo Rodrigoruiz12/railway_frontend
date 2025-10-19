@@ -23,7 +23,7 @@ const Header = () => {
             <nav className="main-nav">
                 <Link to="/">Inicio</Link>
                 <Link to="/products">Productos</Link>
-                <Link to="/blog">Blog</Link> {/* <-- AÑADE ESTE ENLACE */}
+                <Link to="/blog">Blog</Link> 
                 {user?.role === 'admin' && <Link to="/admin">Admin</Link>}
             </nav>
             <div className="header-actions">
@@ -33,7 +33,7 @@ const Header = () => {
                 {user ? (
                     <div className="user-info">
                         <span>{user.email}</span>
-                        <Button onClick={handleLogout} variant="secondary">Logout</Button>
+                        <Button onClick={handleLogout} variant="secondary">Cerrar Sesión</Button>
                     </div>
                 ) : (
                     <div className="login-actions">

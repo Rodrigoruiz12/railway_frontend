@@ -1,4 +1,4 @@
-// src/components/pages/LoginPage.spec.jsx
+// src/components/pages/EntrarPage.spec.jsx
 
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 
-import LoginPage from './LoginPage.jsx';
+import EntrarPage from './EntrarPage.jsx';
 import { AuthContext } from '../../context/AuthContext.jsx';
 // --- CAMBIO 1: Importar el CartContext ---
 import { CartContext } from '../../context/CartContext.jsx'; 
@@ -27,14 +27,14 @@ const renderLoginPage = () => {
             <AuthContext.Provider value={{ login: loginSpy }}>
                 {/* Envolvemos la página con el CartContext que faltaba */}
                 <CartContext.Provider value={cartContextValue}>
-                    <LoginPage />
+                    <EntrarPage />
                 </CartContext.Provider>
             </AuthContext.Provider>
         </BrowserRouter>
     );
 };
 
-describe('Componente LoginPage', () => {
+describe('Componente EntrarPage', () => {
 
     // --- Prueba 8: Estado (Manejo de inputs) ---
     it('debería actualizar el estado al escribir en los inputs', () => {

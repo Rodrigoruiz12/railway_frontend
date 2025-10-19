@@ -1,4 +1,4 @@
-// src/components/pages/CartPage.jsx
+// src/components/pages/CarritoPage.jsx
 import { useContext } from 'react';
 import MainLayout from '../templates/MainLayout';
 import { CartContext } from '../../context/CartContext';
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 // --- CAMBIO 1: Importamos tu función 'money' (asumiendo que está en 'utils/formatPrice.js') ---
 import { money } from '../../utils/formatPrice';
 
-const CartPage = () => {
+const CarritoPage = () => {
     const { cart, removeFromCart } = useContext(CartContext);
     const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -49,4 +49,4 @@ const CartPage = () => {
     );
 };
 
-export default CartPage;
+export default CarritoPage;
